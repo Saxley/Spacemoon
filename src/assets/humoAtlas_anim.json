@@ -1,0 +1,26 @@
+{
+    "anims": [{
+        "key": "humoAtlasAnim",
+        "type": "frames",
+        "repeat": -1,
+        "frameRate": 12,
+        "frames": [{
+                "key": "humoAtlas",
+                "frame": "humoAtlas_0.png"
+            },
+            {
+                "key": "humoAtlas",
+                "frame": "humoAtlas_1.png"
+            },
+            {
+                "key": "humoAtlas",
+                "frame": "humoAtlas_2.png"
+            },
+            {
+                "key": "humoAtlas",
+                "frame": "humoAtlas_3.png"
+            }
+        ]
+     }
+    ]
+}

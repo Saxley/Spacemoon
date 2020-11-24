@@ -1,0 +1,65 @@
+{
+  "frames": [{
+    "filename": "naveAtlas_0.png",
+    "frame": {
+      "x": 83,
+      "y": 80,
+      "w": 98,
+      "h": 128
+    }
+  },
+    {
+      "filename": "naveAtlas_1.png",
+      "frame": {
+        "x": 339,
+        "y": 80,
+        "w": 98,
+        "h": 128
+      }
+    },
+    {
+      "filename": "naveAtlas_2.png",
+      "frame": {
+        "x": 595,
+        "y": 80,
+        "w": 98,
+        "h": 128
+      }
+    },
+    {
+      "filename": "naveAtlas_3.png",
+      "frame": {
+        "x": 851,
+        "y": 80,
+        "w": 98,
+        "h": 128
+      }
+    },
+    {
+      "filename": "naveAtlas_4.png",
+      "frame": {
+        "x": 1107,
+        "y": 80,
+        "w": 98,
+        "h": 128
+      }
+    },
+    {
+      "filename": "naveAtlas_5.png",
+      "frame": {
+        "x": 1363,
+        "y": 80,
+        "w": 98,
+        "h": 128
+      }
+    },
+    {
+      "filename": "naveAtlas_6.png",
+      "frame": {
+        "x": 1619,
+        "y": 80,
+        "w": 98,
+        "h": 128
+      }
+    }]
+}
