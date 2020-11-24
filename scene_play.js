@@ -9,7 +9,7 @@ class Scene_play extends Phaser.Scene{
     this.meteo; 
     this.v=0; 
     this.meteorologia; 
-    this.tiempo=5000;
+    this.tiempo=3000;
     //Detecta colision
     this.choques=this.choque;  
     this.R=false;
@@ -45,11 +45,17 @@ class Scene_play extends Phaser.Scene{
   lluvia(){     
     let centerW=window.innerWidth/2; 
     let centerH=window.innerHeight/2;    
-    let random=0; 
-    let scaleRandom=0;
-    this.meteoro= this.physics.add.image(centerW+random,centerH-400,'meteoro','meteoroAtlas_0.png').setScale(.15).setInteractive();   
+    
+    let random=Phaser.Math.Between(2, 15)*.01; 
+    let posRandom=Phaser.Math.Between(0, 400); 
+    this.meteoro= this.physics.add.image(posRandom,centerH-600,'meteoro','meteoroAtlas_0.png').setScale(random).setInteractive();    
+    if(random<.10){
+      this.meteoro.angle=Phaser.Math.Between(0, 360);
+      this.meteoro.setVelocity(500,200); 
+    }
+    
      this.physics.world.setBoundsCollision(true,true,true,false)
-     this.input.enableDebug(this.meteoro, 0xff0000); 
+     this.input.enableDebug(this.meteoro, 0xFFFF00); 
      this.meteoro.setBounce(1);   
      this.physics.add.overlap(this.meteoro,this.nave, this.choques, null, this);  
     this.meteoro.setCollideWorldBounds(true);
@@ -60,7 +66,7 @@ class Scene_play extends Phaser.Scene{
   }  
   
   meteorologia(){  
-    this.time.addEvent({ delay: this.tiempo, callback: this.lluvia, callbackScope: this, repeat: (2000 / 100) - 1 });
+    this.time.addEvent({ delay: this.tiempo, callback: this.lluvia, callbackScope: this, repeat: (20000 / 100) - 1 });
   } 
   
   create(){  
@@ -94,8 +100,19 @@ class Scene_play extends Phaser.Scene{
    this.del = this.add.text(10, 10, 'del: 0', { fontSize: '12px', fill: '#000' });
   }   
   
-  update(time,delta){
-    this.nave.setVelocity(50,-100);
+  update(time,delta){    
+   var t=0;
+   if (this.valor<4){ 
+       this.nave.setVelocityY(-100);
+     }else{ 
+       this.meteoro.angle+=10;
+       this.nave.setVelocityY(-500);  
+       if(this.nave.x>10 && this.nave.x<150){ 
+         this.nave.setVelocityX(100);
+       }else if(this.nave.x<300 && this.nave>100){
+         this.nave.setVelocityX(-100);
+       }
+     }
     this.del.setText('del:'+delta+'\nTime:'+time); 
     if(Boolean(this.meteoro)){ 
       if(this.meteoro.y>window.innerHeight)this.meteoro.destroy();
