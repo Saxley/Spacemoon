@@ -1,0 +1,39 @@
+{
+	"frames": [{
+			"filename": "humoAtlas_0.png",
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 256,
+				"h": 256
+			}
+		},
+		{
+			"filename": "humoAtlas_1.png",
+			"frame": {
+				"x": 256,
+				"y": 0,
+				"w": 256,
+				"h": 256
+			}
+		},
+		{
+			"filename": "humoAtlas_2.png",
+			"frame": {
+				"x": 512,
+				"y": 0,
+				"w": 256,
+				"h": 256
+			}
+		},
+		{
+			"filename": "humoAtlas_3.png",
+			"frame": {
+				"x": 768,
+				"y": 0,
+				"w": 256,
+				"h": 256
+			}
+		}
+	]
+}
