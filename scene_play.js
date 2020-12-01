@@ -8,6 +8,8 @@ class Scene_play extends Phaser.Scene{
     this.fondoLunar; 
     
     this.nave;   
+    this.prss=false; 
+    this.mover;
     this.dataAnim;
     this.humo; 
     this.t=0;
@@ -152,6 +154,16 @@ class Scene_play extends Phaser.Scene{
   changeMusic(){
       this.musicFondo.stop(); 
       this.musicFinal.play(); 
+  }  
+  mover(){ 
+  
+     this.input.on('pointermove', (pointer)=>{ 
+       if(this.prss){
+        this.nave.x = pointer.x;
+        this.nave.y = pointer.y;  
+       } 
+       
+     }, this); 
   }
   create(){   
     
@@ -192,12 +204,20 @@ class Scene_play extends Phaser.Scene{
     this.humo.active=false; 
     this.humo.visible=false;
     //Agregamos interactividad
-    this.nave.setInteractive({draggable:true});
+    this.nave.setInteractive();
     //Agregamos drag
-   this.nave.on('drag', function (pointer, dragX, dragY) {
+   /*this.nave.on('drag', function (pointer, dragX, dragY) {
         this.x = dragX;
         this.y = dragY;
-    });   
+    }); */   
+    
+    //Mouse control
+    this.nave.on('pointerdown', function () { 
+      this.prss=true;
+    },this);
+    this.nave.on('pointerup', function () { 
+      this.prss=false;
+    },this); 
    this.nave.setCollideWorldBounds(true);
    this.nave.setBounce(.5);
    
@@ -207,12 +227,12 @@ class Scene_play extends Phaser.Scene{
   //Texto dedicado a mostrar el tiempo meteorológico espacial
   this.meteo= this.add.text(10, 25, 'Tiempo meteorológico: Estable', { fontSize: '14px', fill: '#fff' }); 
   //Texto dedicado a mostrar el tiempo
-   this.del = this.add.text(10, 10, '',{ fontSize: '14px', fill: '#fff' });
+   this.del = this.add.text(10, 10, '',{ fontSize: '14px', fill: '#fff' }); 
   }   
   
   update(time,delta){     
   //Se le da movimiento al fondo
-  this.fondo.y+=2;
+   this.fondo.y+=2;
    this.fondoSpace.y+=.5;   
    //Cuando el fondo del espacio llega a 0 la imagen toma la pocision indicada nuevamente
     if(this.fondoSpace.y==0){
@@ -285,25 +305,30 @@ class Scene_play extends Phaser.Scene{
    if(secTemp!=this.sec){ 
      //Se le agrega uno a this.ts el cual es el encargado de almacenar los minutos temporales
      this.ts++;
-   }  
+   }    
+   
    //Cuando this.ts llega a 60 se aumenta el minutero this.ms$ en uno y this.ts vuelve a su valor inicial 0
    if(this.ts==60){ 
      this.ts=0;
      this.ms$++;
-   }
-   //se imprime el tiempo  
+   }  
+   
+   //Se imprime el tiempo  
     this.del.setText('Tiempo:'+this.ms$+':'+this.ts+' min');   
     
    // Se destruyen los meteoritos
     if(Boolean(this.meteoro)){ 
       if(this.meteoro.y>window.innerHeight)this.meteoro.destroy();
-    }   
+    }     
+    
+  // Analiza el puntaje y el tiempo para cambiar la musica.
     if(this.change==false){  
       if(this.valor>50 || this.ms$==1 && this.ts>20){
        this.change=true;
        this.changeMusic(); 
       }
-    }
+    }  
+    this.mover();
   } 
 
 }  
