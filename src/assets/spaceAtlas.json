@@ -1,0 +1,29 @@
+{
+	"frames": [{
+			"filename": "spaceAtlas_0.png",
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 794,
+				"h": 360
+			}
+		}, 
+		{
+		  "filename": "spaceAtlas_1.png",
+			"frame": {
+				"x": 0,
+				"y": 360,
+				"w": 794,
+				"h": 2048
+			} 
+		},
+		{
+		  "filename": "spaceAtlas_2.png",
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 794,
+				"h": 2048
+			} 
+		}]
+}
