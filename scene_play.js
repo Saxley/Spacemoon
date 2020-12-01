@@ -99,7 +99,8 @@ class Scene_play extends Phaser.Scene{
       this.valor=0; 
       this.sec=0;
       this.registry.set('message', this.message);
-      this.scene.start('Scene_over');  
+      this.scene.start('Scene_over'); 
+      this.change=false;
       this.musicFinal.stop();
       this.musicFondo.stop();
     } 
@@ -231,7 +232,8 @@ class Scene_play extends Phaser.Scene{
       this.valor=0; 
       this.sec=0;
       this.registry.set('message', this.message);
-      this.scene.start('Scene_over');   
+      this.scene.start('Scene_over');  
+      this.change=false;
       this.musicFinal.stop();
       this.musicFondo.stop();
     } 
